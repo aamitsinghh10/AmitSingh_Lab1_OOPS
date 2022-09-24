@@ -1,17 +1,17 @@
 import java.util.Scanner;
 
 public class DriverClass {
-   static Room room11 = new Room(101,1,RoomStatus.Available,Occupancy.Single,true,RoomPrices.price[0]+1000);
-   static Room room12 = new Room(102,1,RoomStatus.Available,Occupancy.Double,true,RoomPrices.price[1]+1000);
-   static Room room13 = new Room(103,1,RoomStatus.Available,Occupancy.Double,false,RoomPrices.price[1]);
-   static Room room14 = new Room(104,1,RoomStatus.Available,Occupancy.Single,false,RoomPrices.price[0]);
+   static Room room_no11 = new Room(101,1,RoomStatus.Available,Occupancy.Single,true,RoomPrices.price[0]+1000);
+   static Room room_no12 = new Room(102,1,RoomStatus.Available,Occupancy.Double,true,RoomPrices.price[1]+1000);
+   static Room room_no13 = new Room(103,1,RoomStatus.Available,Occupancy.Double,false,RoomPrices.price[1]);
+   static Room room_no14 = new Room(104,1,RoomStatus.Available,Occupancy.Single,false,RoomPrices.price[0]);
 
-   static Room room21 = new Room(201,2,RoomStatus.Available,Occupancy.Single,true,RoomPrices.price[0]+1000);
-   static Room room22 = new Room(202,2,RoomStatus.Available,Occupancy.Single,false,RoomPrices.price[0]);
-   static Room room23 = new Room(203,2,RoomStatus.Available,Occupancy.Double,true,RoomPrices.price[1]+1000);
-   static Room room24 = new Room(204,2,RoomStatus.Available,Occupancy.Triple,false,RoomPrices.price[2]);
+   static Room room_no21 = new Room(201,2,RoomStatus.Available,Occupancy.Single,true,RoomPrices.price[0]+1000);
+   static Room room_no22 = new Room(202,2,RoomStatus.Available,Occupancy.Single,false,RoomPrices.price[0]);
+   static Room room_no23 = new Room(203,2,RoomStatus.Available,Occupancy.Double,true,RoomPrices.price[1]+1000);
+   static Room room_no24 = new Room(204,2,RoomStatus.Available,Occupancy.Triple,false,RoomPrices.price[2]);
 
-   static Room[][] rooms = {{room11,room12,room13,room14},{room21,room22,room23,room24}};
+   static Room[][] rooms = {{room_no11,room_no12,room_no13,room_no14},{room_no21,room_no22,room_no23,room_no24}};
 
    static Address address = new Address("Noida",249411,"Uttar Pradesh","Master's Point");
   static  HotelDetails hotel = new HotelDetails("Royal Blue",address,4.6,2,4,rooms);
@@ -73,10 +73,10 @@ public class DriverClass {
             }
          }
          else{
-            for (Room[] value : rooms) {
-               for (Room item : value) {
-                  room = roomAvailable(item, bookingRequest);
-                  if(room != null)
+            for (Room[] row_values : rooms) {
+               for (Room curr_value : row_values) {
+                  room = roomAvailable(curr_value, bookingRequest);
+                  if(room != null )
                      break;
                }
             }
