@@ -18,12 +18,12 @@ public class DriverClass {
 
    public static void main(String[] args) {
       BookingRequest bookingRequest;
-      StayDuration duration;
       Customer customer = new Customer("Amit Singh", 24, 894984010);
 
       Scanner obj = new Scanner(System.in);
 
       while (true) {
+
          System.out.println("Do request with Required Conditions");
          System.out.println("Enter which type of room you want: Single Double Triple");
          String occupancy = obj.next();
@@ -32,11 +32,13 @@ public class DriverClass {
          System.out.println("AC is required or not?");
          boolean ac = obj.nextBoolean();
          bookingRequest = new BookingRequest(Occupancy.valueOf(occupancy), floor, ac);
+
          Room isRoomAvailable = checkInCustomer(bookingRequest, hotel.getTotalRooms());
 
          if (isRoomAvailable != null) {
             Booking bookingCompleted = bookingCompleteDetails(isRoomAvailable, customer);
             System.out.println("These are your Room Allocation complete details");
+
             System.out.println("Room Number: " + bookingCompleted.getRoom().getRoom_no() + "," +
                     "floor Number: " + bookingCompleted.getRoom().getFloor_no() + "," +
                     "Air Conditioned" +" "+ bookingCompleted.getRoom().isHasAC() + "," +
@@ -55,7 +57,7 @@ public class DriverClass {
             totalPrice += room.getPrice() ;
          }
 
-         return new Booking(room,customer, totalPrice, customer.getDuration());
+         return new Booking(room, customer, totalPrice);
       }
 
       private static Room checkInCustomer(BookingRequest bookingRequest, Room[][] rooms) {
@@ -74,12 +76,14 @@ public class DriverClass {
             for (Room[] value : rooms) {
                for (Room item : value) {
                   room = roomAvailable(item, bookingRequest);
-                  if(room != null )break;
+                  if(room != null)
+                     break;
                }
             }
          }
          if(room != null)
             room.setRoomStatus(RoomStatus.NotAvailable);
+
          return room;
       }
 
@@ -101,5 +105,4 @@ public class DriverClass {
          }
          return null;
       }
-
    }
