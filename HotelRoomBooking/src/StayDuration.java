@@ -1,5 +1,7 @@
 import java.util.Date;
 
+//This class is not used anywhere, just to show that this class is also possible
+
 public class StayDuration {
     private Date checkIn;
     private Date checkOut;
